@@ -1,0 +1,18 @@
+[project]
+name = "koya-operations-dashboard"
+version = "0.1.0"
+description = "Executive operations reporting dashboard for Koya Talent"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "altair>=5.5.0",
+    "pandas>=3.0.5",
+    "pytest>=9.1.1",
+    "python-dateutil>=2.9.0.post0",
+    "requests>=2.34.2",
+    "streamlit>=1.63.0",
+    "supabase>=2.31.0",
+]
+
+[tool.pytest.ini_options]
+pythonpath = ["."]
