@@ -68,7 +68,7 @@ def inject_theme() -> None:
 
         .block-container {
             max-width: 1480px;
-            padding-top: 2rem;
+            padding-top: 3.75rem;
             padding-bottom: 3.5rem;
         }
 
@@ -215,7 +215,6 @@ def inject_theme() -> None:
             .health-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
         }
         @media (max-width: 700px) {
-            .block-container { padding-top: 1.2rem; }
             .report-header { display: block; }
             .report-meta { text-align: left; margin-top: .8rem; }
             .metric-grid, .health-grid { grid-template-columns: 1fr; }
