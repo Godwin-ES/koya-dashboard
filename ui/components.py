@@ -1,8 +1,9 @@
 from __future__ import annotations
 
-from datetime import datetime
+from datetime import datetime, timezone
 from html import escape
 from typing import Any
+from zoneinfo import ZoneInfo
 
 import streamlit as st
 
@@ -21,6 +22,8 @@ AREA_LABELS = {
     "cross_functional": "Cross-functional",
     "cross_source": "Cross-source",
 }
+
+LAGOS_TIME_ZONE = ZoneInfo("Africa/Lagos")
 
 
 def display_area_name(value: str | None) -> str:
@@ -44,7 +47,10 @@ def format_timestamp(value: Any) -> str:
         return "Time unavailable"
     try:
         parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
-        return parsed.strftime("%d %b %Y · %H:%M")
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        local_time = parsed.astimezone(LAGOS_TIME_ZONE)
+        return local_time.strftime("%d %b %Y · %H:%M %Z")
     except ValueError:
         return str(value)
 
